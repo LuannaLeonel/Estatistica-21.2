@@ -6,11 +6,10 @@ output: pdf_document
 ---
 
 ```{r setupandlibs, message=FALSE, echo=FALSE, warning=FALSE}
-library(graphicx)
+#library(graphicx)
 library(readr)
 library(dplyr)
 
-theme_set(theme_minimal())
 ```
 
 # Lista 2
@@ -19,15 +18,21 @@ theme_set(theme_minimal())
 
 #### 1) Apresente/Descreva um problema em que seja necesśario o planejamento e o desenvolvimento de uma pesquisa(estudo) estatística(o) para que o mesmo seja resolvido.
 
-
+Devido às consequências do Covid-19, um consultório de Pneumologia precisa priorizar os atendimentos de seus pacientes levando em consideração idade, risco e teste positivo para COVID-19. Os médicos que atendem na clínica também precisam saber como o vírus afetou seus pacientes.
 
 #### 2) A partir do problema descrito acima:
 
 ##### a) Diga qual é a população associada ao problema e o tipo.
 
+Nesse caso, a População é o conjunto de pacientes do consultório. Essa é uma população finita.
+
 ##### b) Apresente os objetivos geral e específicos do estudo(pesquisa) estatístico(a).
 
-##### c) Diga quais vari ́aveis e quais os seus tipos podem ser de interesse na pesquisa.
+O objetivo geral é saber como o COVID-19 afetou os pacientes da clínica. O objetivo específico é definir a ordem de prioridade das consultas de cada paciente de acordo com o risco.
+
+##### c) Diga quais varíaveis e quais os seus tipos podem ser de interesse na pesquisa.
+
+varíaveis específicas de interesse para a pesquisa: *sexo, idade, presença de comorbidade, já teve covid.*
 
 ##### d) A pesquisa requer a coleta de uma amostra? Por que?
 
@@ -37,12 +42,15 @@ theme_set(theme_minimal())
 
 ###### ii) Apresente as informações, o cálculo e o resultado para o tamanho da amostra.
 
-#### 3) Apresente ou colete uma base de dados necessária para a resolução de um problema (podeser o mesmo do item 1) que requer uma análise estatística descritiva e inferencial.
 ```{r}
-df_município <- read_csv("~/Estatistica-21.2/data/municipio.csv")
-
-head(df_município)
+# Amostra de 18 pacientes de um mês da clínica
+df_pacientes <- read_csv("~/Estatistica-21.2/data/PACIENTES.csv")
+head(df_pacientes)
 ```
+
+#### 3) Apresente ou colete uma base de dados necessária para a resolução de um problema (podeser o mesmo do item 1) que requer uma análise estatística descritiva e inferencial.
+
+
 
 ##### a) Descreva o problema, população, amostra, tipo de amostragem, objetivos geral e específicos, variáveis e tipos correspondentes, além de dizer quais são os parâmetros que mais interessam analisar.
 
@@ -50,6 +58,10 @@ A pecuária é um dos grandes causadores da emissão de gases do efeito estufa, 
 
 ##### b) Anexe; separadamente; a base de dados em excel ou csv ou disponibilize o link de acesso à base.
 
+```{r}
+df_município <- read_csv("~/Estatistica-21.2/data/municipio.csv")
 
+head(df_município)
+```
 
 origem do dado: <https://basedosdados.org/dataset/br-ibge-censo-agropecuario?bdm_table=municipio>

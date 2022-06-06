@@ -1,0 +1,19 @@
+paciente  ,sexo,idade,COVID-19,comorbidade,Risco
+1,F,49,S,N,2
+2,F,61,N,S,2
+3,M,34,S,S,3
+4,F,73,S,N,3
+5,M,47,S,S,2
+6,M,58,S,N,2
+7,M,43,N,N,1
+8,M,71,S,S,3
+9,F,32,N,S,2
+10,M,24,S,N,2
+11,M,80,S,S,4
+12,F,72,S,S,4
+13,M,56,N,S,2
+14,F,49,N,N,1
+15,F,83,S,N,3
+16,F,45,S,N,2
+17,M,33,S,N,2
+18,F,67,N,S,2
