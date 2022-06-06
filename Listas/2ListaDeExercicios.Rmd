@@ -1,0 +1,55 @@
+---
+title: "2 Lista de Exercícios"
+author: "Igor Seródio Barcelar, Henrique Vitor Chaves Galindo e Luanna Leonel de Farias Silva"
+date: '2022-06-04'
+output: pdf_document
+---
+
+```{r setupandlibs, message=FALSE, echo=FALSE, warning=FALSE}
+library(graphicx)
+library(readr)
+library(dplyr)
+
+theme_set(theme_minimal())
+```
+
+# Lista 2
+
+### *Desenvolvimento de uma Pesquisa Estatística*
+
+#### 1) Apresente/Descreva um problema em que seja necesśario o planejamento e o desenvolvimento de uma pesquisa(estudo) estatística(o) para que o mesmo seja resolvido.
+
+
+
+#### 2) A partir do problema descrito acima:
+
+##### a) Diga qual é a população associada ao problema e o tipo.
+
+##### b) Apresente os objetivos geral e específicos do estudo(pesquisa) estatístico(a).
+
+##### c) Diga quais vari ́aveis e quais os seus tipos podem ser de interesse na pesquisa.
+
+##### d) A pesquisa requer a coleta de uma amostra? Por que?
+
+##### e) Se a pesquisa requer a coleta de uma amostra:
+
+###### i) Diga o que a constitui e que tipo de amostragem é mais adequado para a sua coleta.
+
+###### ii) Apresente as informações, o cálculo e o resultado para o tamanho da amostra.
+
+#### 3) Apresente ou colete uma base de dados necessária para a resolução de um problema (podeser o mesmo do item 1) que requer uma análise estatística descritiva e inferencial.
+```{r}
+df_município <- read_csv("~/Estatistica-21.2/data/municipio.csv")
+
+head(df_município)
+```
+
+##### a) Descreva o problema, população, amostra, tipo de amostragem, objetivos geral e específicos, variáveis e tipos correspondentes, além de dizer quais são os parâmetros que mais interessam analisar.
+
+A pecuária é um dos grandes causadores da emissão de gases do efeito estufa, então foi realizado um levantamento de municípios com uma quantidade elevada de cabeças de gado (40.000) para avaliar, consequentemente, a porcentagem que possui uma produção maior de metano usando dados do ano de 2017. A população são os municípios brasileiros, a amostra é aleatória simples e consiste em 374 municípios (superior a 5% de certeza), a variável é a quantidade de cabeças de gado em cada município e é do tipo quantitativa discreta. O parâmetro de interesse é a porcentagem de municípios que possuem mais de 40.000 cabeças de gado. Analisando a amostra a estatística obtida foi que 14,97% dos munícipios possuiam mais que 40.000 cabeças de gado (dentro da margem de erro, sendo 17,24% o valor do parâmetro).
+
+##### b) Anexe; separadamente; a base de dados em excel ou csv ou disponibilize o link de acesso à base.
+
+
+
+origem do dado: <https://basedosdados.org/dataset/br-ibge-censo-agropecuario?bdm_table=municipio>

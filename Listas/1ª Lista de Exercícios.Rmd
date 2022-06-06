@@ -1,0 +1,76 @@
+---
+title: "1ª Lista de Exercícios"
+author: "Igor Seródio Barcelar, Henrique Vitor Chaves Galindo e Luanna Leonel de Farias Silva"
+date: '2022-05-05'
+output: html_document
+---
+
+#### 1) O que é Distribuição de Frequências? Explique e apresente um exemplo.
+
+É o agrupamento de dados em classes mutuamente excludentes e o número de ocorrências de cada classe.
+
+Exemplo:\
+![](https://i0.wp.com/matematicasimplificada.com/wp-content/uploads/2020/07/tabela40estatdf.jpg){width="30%"}
+
+#### 2) Explique de forma intuitiva e ou de forma formal o que é uma Variável Aleatória. Apresente um (1) ou mais exemplos.
+
+É uma variável quantitativa cujo valor depende de fatores aleatórios, como por exemplo um lançamento de moeda, os resultados possíveis sendo cara ou coroa.
+
+#### 3) Como podem ser classificadas as Vari´aveis Aleat´orias? Apresente um exemplo de cada tipo.
+
+Uma varíavel aleatória pode ser classificada como discreta, quando seu espaço amostral é finito ou é infinito e enumerável, ou como contínua, quando seu espaço amostral é infinito e não enumerável. Um exemplo de variável aleatória discreta é o resultado do lançamento de um dado de 6 lados. Um exemplo de uma contínua é a renda familiar de pessoas selecionadas por amostragem aleatória para participarem de uma pesquisa.
+
+#### 4) Apresente a definição e um exemplo de função de probabilidade (f.p.).
+
+É a função que associa cada valor possível de uma variável aleatória à sua probabilidade de ocorrência.
+
+Exemplo:\
+[![](https://i.imgur.com/jTuYkbD.png){width="80%"}](https://i.imgur.com/jTuYkbD.png)
+
+
+![](https://i.pinimg.com/474x/55/fe/8f/55fe8fb51f73d174ac11ea10483483b8.jpg){width="0.5%"}
+ 
+#### 13) Apresente a definição e um exemplo de função densidade de probabilidade (f.d.p.)
+
+Uma função que descreve a plausibilidade uma variável aleátória tomar um valor dado. A probabilidade da v.a. cair em uma faixa particular é dada pela integral da densidade dessa variável sobre tal faixa.
+
+Exemplo:\
+![](https://datasciencelk.com/wp-content/uploads/2020/04/pdf-image.jpg)
+
+#### 14) Descreva situações ou experimentos aleatórios em que o fenômeno (dados) a ser estudado/investigado pode ser representado por uma Distribuição Normal
+
+Muitos fenômenos aleatórios comportam-se próximos a essa distribuição, tais como altura, pressão sanguínea, peso, etc. Pode, também, ser utilizada para calcular, de forma aproximada, probabilidades para outras distribuições, como por exemplo, para a distribuição binomial.
+Por exemplo, Em um exame Holter, os dados da frequencia cardíaca do paciente seão coletados de forma que será possivel ao médico calcular a média e a variância dos batimentos do paciente durante o período de 24h.
+
+#### 15)  Qual ou quais sâo os parâmetros da Distribuição Normal que deve(m) ser conhecido(s) para que seja possível calcular a probabilidade de algum evento de interesse?
+
+Os parâmetros são a média da distribuição, a variância da distribuição.
+
+#### 16) Apresente a f.d.p. da Distribuição Normal e dê um exemplo de problema cuja solução requeira o cálculo de probabilidade usando a mesma. Apresente o cálculo manual e usando função do R.
+
+A função densidade de probabilidade é dada por $$f(x) = \frac{1}{\sqrt{2πσ^2}}e^{-\frac{1}{2}(\frac{x−μ}{σ})^2} −∞<x<∞ $$
+
+Exemplo:\
+> A concentração de um poluente em água liberada por uma fábrica tem distribuição N(8,1.5). Qual a chance, de que num dado dia, a concentração do poluente exceda o limite regulatório de 10 ppm?
+
+A solução do problema resume-se em determinar a proporção da distribuição que está acima de 10 ppm, ie $P(X>10)$. Usando a estatística $Z$ temos: $P(X>10) = P(Z > \frac{10-8}{1.5}) = P(Z>1.33) = 1- P(Z \le 1.33) = 0.09$
+
+Portanto, espera-se que a água liberada pela fábrica exceda os limites regulatórios cerca de 9% do tempo. 
+
+
+#### 17) Diga e descreva resumidamente quais são as principais Etapas/Fases de uma Pesquisa Estatística. Dê um exemplo.
+
+As fases do método estatístico são:
+
+- Definição do problema
+- Planejamento
+- Coleta dos dados
+- Crítica dos dados
+- Apuração dos dados
+- Exposição ou Apresentação dos dados
+- Análise e Interpretação dos resultados
+
+Exemplo:\
+
+> Um fabricante de sabonete, que deseja lançar um produto novo no mercado, poderia estar interessado em um estudo sobre as características dos consumidores atuais. Não havendo estudos semelhantes, ele deverá formular o problema com base em sua própria experiência. Uma lista de fatores relevantes deverá resultar dessa investigação preliminar: número de unidades consumidas por família em cada ano, número médio de pessoas que compõe cada família, número de membros adultos da família, as marcas preferidas e assim por diante.
+
