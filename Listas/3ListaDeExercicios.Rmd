@@ -7,72 +7,171 @@ date: '2022-05-25'
 output: pdf_document
 ---
 
-#### 4) Mostre que, em qualquer distribuição normal, a área sob a curva (probabilidade), determinada por cada um dos intervalos abaixo, é sempre a mesma e independe dos parâmetros da distribuição:  
-&nbsp;
+#### 1) Se a variável Z tem distribuição normal padrão, isto é, Z ∼ N(0; 1), obtenha:
+
+##### a) $P(Z < 1, 64)$
+
+= 0,9495
+
+```{r}
+print(pnorm(1.64,0,1))
+```
+
+##### b) $P(Z = 1, 64)$
+
+= 0
+
+##### c) $P (Z ≤ 1, 64)$
+
+= 0,9495
+
+##### d) $P(Z < −1, 64)$
+
+= 0.0505
+
+```{r}
+print(pnorm(-1.64,0,1))
+```
+
+##### e) $P(−1, 64 < Z < 1, 64)$
+
+= P(Z \< -1,64) − P(Z \< −1,64)
+
+= 0,9495 - 0,0505
+
+= 0,8990
+
+##### f) $P(Z > 1,64)$
+
+= 1 - 0,9495
+
+= 0,0505
+
+##### g) o valor do quantil z, da tabela (de preferência da acumulada) da normal padrão, tal que, $P(Z < z) = 0,05 (5 \%)$.
+
+= −1,64
+
+##### h) o valor do quantil z, da tabela da normal padrão, tal que, $P (Z ≥ z) = 0, 05$.
+
+= 0,13
+
+#### 2) Seja X uma v.a, tal que, X \~ N(100;25), determinar:
+
+```{r}
+m = 100
+var = 5
+
+a = 1- pnorm(108,m,var)
+b = 0
+c = pnorm(107,m,var) - pnorm(89,m,var)
+d = pnorm(16 + m ,m,var) - pnorm(12 + m ,m ,var)
+e = pnorm(116,m,var) - pnorm(112,m,var)
+```
+
+##### a) $P(X ≥ 108)$
+
+= 0,0548
 
 
-$Z \sim {\sf N}(0, 1)$ 
+##### b) $P(X = 100)$
 
-$X \sim {\sf N}(\mu, \delta^2)$  
+= 0
 
-$Z = \frac{X - \mu}{\delta}$  
+##### c) $P(89 ≤ X ≤ 107)$
+
+= 0,9331
+
+##### d) $P (12 < X − μ < 16)$
+
+= 0,0075
+
+##### e) $P (112 < X < 116)$;
+
+= 0,0075
+
+##### f) $P (X < 100 ou X > 106)$;
+
+##### g) o valor do quantil x, tal que $P (X < x) = 0, 05$;
+
+##### h) o valor do quantil x, tal que $P (X > x) = 0, 05$;
+
+##### i) o valor do quantil x, tal que $P (X > x) = 0, 975$;
+
+##### j) Apresente os inputs e ouputs usando a linguagem R de todos os cálculos dos itens anteriores sem usar a distribuição da variável padronizada $Z =$ $\frac{X−μ}{σ}$
+
+#### 3)  A vida útil (em anos) de um computador pessoal tem distribuição aproximadamente normal com média de 2,9 anos e variância de 1,96 anos.
+
+#### 4) Mostre que, em qualquer distribuição normal, a área sob a curva (probabilidade), determinada por cada um dos intervalos abaixo, é sempre a mesma e independe dos parâmetros da distribuição:
+
+#### 
+
+ 
+
+$Z \sim {\sf N}(0, 1)$
+
+$X \sim {\sf N}(\mu, \delta^2)$
+
+$Z = \frac{X - \mu}{\delta}$
 
 ##### a) $(\mu - 1, 64\delta; \mu + 1, 64\delta)$;
-&nbsp;
 
-$Z = \frac{(\mu \pm 1, 64\delta) - \mu}{\delta}$  
+ 
 
-$Z = \frac{\pm 1, 64\delta}{\delta}$  
+$Z = \frac{(\mu \pm 1, 64\delta) - \mu}{\delta}$
 
-$Z = \pm 1, 64$  
+$Z = \frac{\pm 1, 64\delta}{\delta}$
 
-$P(- 1, 64 < Z < 1, 64) = P(0 < Z < 1, 64) + P(- 1, 64 < Z < 0)$  
+$Z = \pm 1, 64$
 
-$P(- 1, 64 < Z < 1, 64) = 0, 44950 + 0, 44950$  
+$P(- 1, 64 < Z < 1, 64) = P(0 < Z < 1, 64) + P(- 1, 64 < Z < 0)$
 
-$P(- 1, 64 < Z < 1, 64) = 0, 89900$  
-&nbsp;  
+$P(- 1, 64 < Z < 1, 64) = 0, 44950 + 0, 44950$
 
-##### b) $(\mu - 1, 96\delta; \mu + 1, 96\delta)$;  
-&nbsp;
+$P(- 1, 64 < Z < 1, 64) = 0, 89900$\
+ 
 
-$Z = \frac{(\mu \pm 1, 96\delta) - \mu}{\delta}$  
+##### b) $(\mu - 1, 96\delta; \mu + 1, 96\delta)$;
 
-$Z = \frac{\pm 1, 96\delta}{\delta}$  
+ 
 
-$Z = \pm 1, 96$  
+$Z = \frac{(\mu \pm 1, 96\delta) - \mu}{\delta}$
 
-$P(- 1, 96 < Z < 1, 96) = P(0 < Z < 1, 96) + P(- 1, 96 < Z < 0)$  
+$Z = \frac{\pm 1, 96\delta}{\delta}$
 
-$P(- 1, 96 < Z < 1, 96) = 0, 47500 + 0, 47500$  
+$Z = \pm 1, 96$
 
-$P(- 1, 96 < Z < 1, 96) = 0, 95000$  
-&nbsp;  
+$P(- 1, 96 < Z < 1, 96) = P(0 < Z < 1, 96) + P(- 1, 96 < Z < 0)$
 
-##### c) $(\mu - 2, 57\delta; \mu + 2, 57\delta)$.  
-&nbsp;
+$P(- 1, 96 < Z < 1, 96) = 0, 47500 + 0, 47500$
 
-$Z = \frac{(\mu \pm 2, 57\delta) - \mu}{\delta}$  
+$P(- 1, 96 < Z < 1, 96) = 0, 95000$\
+ 
 
-$Z = \frac{\pm 2, 57\delta}{\delta}$  
+##### c) $(\mu - 2, 57\delta; \mu + 2, 57\delta)$.
 
-$Z = \pm 2, 57$  
+ 
 
-$P(- 2, 57 < Z < 2, 57) = P(0 < Z < 2, 57) + P(- 2, 57 < Z < 0)$  
+$Z = \frac{(\mu \pm 2, 57\delta) - \mu}{\delta}$
 
-$P(- 2, 57 < Z < 2, 57) = 0,  49492 + 0,  49492$  
+$Z = \frac{\pm 2, 57\delta}{\delta}$
 
-$P(- 2, 57 < Z < 2, 57) = 0, 98984$  
-&nbsp;  
+$Z = \pm 2, 57$
 
-##### d) Esboce um gráfico para cada uma dessas situações e elabore uma tabela dos resultados obtidos para você memorizar.  
+$P(- 2, 57 < Z < 2, 57) = P(0 < Z < 2, 57) + P(- 2, 57 < Z < 0)$
 
-Gráficos:  
+$P(- 2, 57 < Z < 2, 57) = 0, 49492 + 0, 49492$
 
-![](https://i.imgur.com/lgJezct.jpg){ width=30% }  
-![](https://i.imgur.com/RmLFjnW.jpg){ width=30% }  
-![](https://i.imgur.com/J9D21F0.jpg){ width=30% }  
-Tabela: 
+$P(- 2, 57 < Z < 2, 57) = 0, 98984$\
+ 
+
+##### d) Esboce um gráfico para cada uma dessas situações e elabore uma tabela dos resultados obtidos para você memorizar.
+
+Gráficos:
+
+![](https://i.imgur.com/lgJezct.jpg){width="30%"}\
+![](https://i.imgur.com/RmLFjnW.jpg){width="30%"}\
+![](https://i.imgur.com/J9D21F0.jpg){width="30%"}\
+Tabela:
 
 ```{r table1, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
 tabl <- "
@@ -83,57 +182,60 @@ tabl <- "
 | (u - 2,57d; u + 2,57d) | 2,57          | 0,98984       |
 "
 cat(tabl)
-```  
+```
 
-#### 5) Se a variável aleatória Z segue o comportamento de uma distribuição normal padrão, diga quais devem ser o valor do quantil z tal que:  
+#### 5) Se a variável aleatória Z segue o comportamento de uma distribuição normal padrão, diga quais devem ser o valor do quantil z tal que:
 
-##### a) $P(-z < Z < z) = 0,90\ (90,0\%)$;  
-&nbsp;  
+##### a) $P(-z < Z < z) = 0,90\ (90,0\%)$;
 
-$P(-z < Z < z) = P(0 < Z < z) + P(-z < Z < 0)$  
+ 
 
-$0,90 = 2P(0 < Z < z)$  
+$P(-z < Z < z) = P(0 < Z < z) + P(-z < Z < 0)$
 
-$\frac{0,90}{2} = P(0 < Z < z)$  
+$0,90 = 2P(0 < Z < z)$
 
-$z \approx 1,64$  
-&nbsp;  
+$\frac{0,90}{2} = P(0 < Z < z)$
 
-##### b) $P(-z < Z < z) = 0,95\ (95,0\%)$;  
-&nbsp;  
+$z \approx 1,64$\
+ 
 
-$P(-z < Z < z) = P(0 < Z < z) + P(-z < Z < 0)$  
+##### b) $P(-z < Z < z) = 0,95\ (95,0\%)$;
 
-$0,95 = 2P(0 < Z < z)$  
+ 
 
-$\frac{0,95}{2} = P(0 < Z < z)$  
+$P(-z < Z < z) = P(0 < Z < z) + P(-z < Z < 0)$
 
-$z \approx 1,96$  
-&nbsp;  
+$0,95 = 2P(0 < Z < z)$
 
-##### c) $P(-z < Z < z) = 0,99\ (99,0\%)$;  
-&nbsp;  
+$\frac{0,95}{2} = P(0 < Z < z)$
 
-$P(-z < Z < z) = P(0 < Z < z) + P(-z < Z < 0)$  
+$z \approx 1,96$\
+ 
 
-$0,99 = 2P(0 < Z < z)$  
+##### c) $P(-z < Z < z) = 0,99\ (99,0\%)$;
 
-$\frac{0,99}{2} = P(0 < Z < z)$  
+ 
 
-$z \approx 2, 57$  
-&nbsp;  
+$P(-z < Z < z) = P(0 < Z < z) + P(-z < Z < 0)$
 
-##### d) Esboce um gráfico para cada uma dessas situações e elabore uma tabela dos resultados obtidos para você memorizar.  
+$0,99 = 2P(0 < Z < z)$
 
-Gráficos: 
+$\frac{0,99}{2} = P(0 < Z < z)$
 
-![](https://i.imgur.com/fFPYIgr.jpg){ width=30% }  
+$z \approx 2, 57$\
+ 
 
-![](https://i.imgur.com/BbIH98p.jpg){ width=30% }  
+##### d) Esboce um gráfico para cada uma dessas situações e elabore uma tabela dos resultados obtidos para você memorizar.
 
-![](https://i.imgur.com/mWSpB6P.jpg){ width=30% }  
+Gráficos:
 
-Tabela: 
+![](https://i.imgur.com/fFPYIgr.jpg){width="30%"}
+
+![](https://i.imgur.com/BbIH98p.jpg){width="30%"}
+
+![](https://i.imgur.com/mWSpB6P.jpg){width="30%"}
+
+Tabela:
 
 ```{r table2, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
 tabl <- "
@@ -144,7 +246,7 @@ tabl <- "
 | 0,99          | 2,57          |
 "
 cat(tabl)
-```  
+```
 
 ##### e) Existe alguma relação dos resultados desta questão com a anterior (a Questão 4)? Se sim, qual(ais)?
 
