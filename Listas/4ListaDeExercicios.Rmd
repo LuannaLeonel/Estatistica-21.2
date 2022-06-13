@@ -1,0 +1,188 @@
+---
+title: "4ª Lista de Exercícios"
+author: "Igor Seródio Barcelar, Henrique Vitor Chaves Galindo e Luanna Leonel de Farias Silva"
+date: '2022-06-06'
+output: pdf_document
+---
+
+#### 1) Uma v.a. X tem distribuição normal, com média 100 e desvio padrão 10.
+
+ 
+
+$Z \sim {\sf N}(0, 1)$
+
+$X \sim {\sf N}(\mu, \delta^2)$
+
+$Z = \frac{X - \mu}{\delta}$
+
+$E(\overline{X}) = \mu$
+
+$\sqrt{Var(\overline{X})} = \frac{\delta}{\sqrt{n}}$
+
+##### a) Qual a P(90 \< X \< 110)?
+
+ 
+
+$z' = \frac{90 - 100}{10}$
+
+$z' = \frac{-10}{10}$
+
+$z' = -1$
+
+$z'' = \frac{110 - 100}{10}$
+
+$z'' = \frac{10}{10}$
+
+$z'' = 1$
+
+$P(-1 < Z < 1) = P(0 < Z < 1) + P(-1 < Z < 0)$
+
+$P(-1 < Z < 1) = 0, 34134 + 0, 34134$
+
+$P(90 < X < 110) = P(-1 < Z < 1) = 0, 68268$
+
+ 
+
+##### b) Se $\overline{X}$ for a média de uma amostra de 16 elementos retiradas dessa população, calcule P(90 \< $\overline{X}$ \< 110).
+
+ 
+
+$z' = \frac{90 - 100}{(\frac{10}{\sqrt{16}})}$
+
+$z' = \frac{-10(4)}{10}$
+
+$z' = -4$
+
+$z'' = \frac{110 - 100}{(\frac{10}{\sqrt{16}})}$
+
+$z'' = \frac{10(4)}{10}$
+
+$z'' = 4$
+
+$P(-4 < Z < 4) = P(0 < Z < 4) + P(-4 < Z < 0)$
+
+$P(-4 < Z < 4) = 0, 49997 + 0, 49997$
+
+$P(90 < \overline{X} < 110) = P(-1 < Z < 1) = 0, 99994$
+
+##### c) Usando a linguagem R, represente, num único gráfico, as distribuições de X e $\overline{X}$.
+
+```{r echo = FALSE}
+curve(dnorm(x, mean = 100, sd = 2.5), 60, 140)
+curve(dnorm(x, mean = 100, sd = 10), 60, 140, add=TRUE)
+```
+
+ 
+
+##### d) Que tamanho deveria ter a amostra para que P(90 \< $\overline{X}$ \< 110) = 0, 95?
+
+ 
+
+$P(-z < Z < z) = 0,95000$
+
+$P(-z < Z < z) = 2P(0 < Z < z)$
+
+$P(0 < Z < z) = 0, 47500$
+
+$z = 1,96$
+
+$1,96 = \frac{10}{(\frac{10}{\sqrt{n}})}$
+
+$1,96 = \sqrt{n}$
+
+$n = 1,96^2$
+
+$n \approx 4$\
+ 
+
+#### 2) A máquina de empacotar um determinado produto o faz segundo uma distribuição normal, com média $\mu$ e desvio padrão 10 g.
+
+ 
+
+##### a) Em quanto deve ser regulado o peso médio $\mu$ para que apenas 10% dos pacotes tenham menos do que 500 g?
+
+ 
+
+$P(X<500) = 0,10$
+
+$P(Z<z) = 0,10$
+
+$z = -1,29$
+
+$-1,29 = \frac{500 - \mu}{10}$
+
+$\mu = 1,29(10) + 500$
+
+$\mu = 512,90\ g$\
+ 
+
+##### b) Com a máquina assim regulada, qual a probabilidade de que o peso total de 4 pacotes escolhidos ao acaso seja inferior a 2 kg?
+
+ 
+
+$P(S_4<2000)$
+
+$P(\overline{X}<500)$
+
+$P(Z<z)$
+
+$P(Z<\frac{500 - 512,90}{(\frac{10}{\sqrt{4}})})$
+
+$P(Z<\frac{-12,90(2)}{10})$
+
+$P(Z<-2,58) = 0, 00494$\
+ 
+
+#### 3) No exemplo anterior, e após a máquina estar regulada, programou-se uma carta de controle de qualidade. De hora em hora, será retirada uma amostra de quatro pacotes e esses serão pesados. Se a média da amostra for inferior a 495 g ou superior a 520 g, encerra-se a produção para reajustar a máquina, isto é, reajustar o peso médio.
+
+ 
+
+##### a) Qual a probabilidade de ser feita uma parada desnecessária?
+
+ 
+
+$P(\overline{X}<495) + P(\overline{X}>520)$
+
+$P(Z<\frac{495 - 512,90}{(\frac{10}{\sqrt{4}})}) + P(Z>\frac{520 - 512,90}{(\frac{10}{\sqrt{4}})})$
+
+$P(Z<-1,79(2)) + P(Z>0,71(2))$
+
+$P(Z<-3,58) + P(Z>1,42) = 0,00017 + 0,07780 = 0,07797$\
+ 
+
+##### b) Se o peso médio da máquina desregulou-se para 500 g, qual a probabilidade de continuar a produção fora dos padrões desejados?
+
+ 
+
+$P(\overline{X}<495) + P(\overline{X}>520)$
+
+$P(Z<\frac{495 - 500}{(\frac{10}{\sqrt{4}})}) + P(Z>\frac{520 - 500}{(\frac{10}{\sqrt{4}})})$
+
+$P(Z<-0,50(2)) + P(Z>2,00(2))$
+
+$P(Z<-1,00) + P(Z>4,00) = 0,15866 + 0,00003 = 0,15869$\
+ 
+
+#### 4) Um procedimento de controle de qualidade foi planejado para garantir um máximo de 10% de itens defeituosos na produção. A cada 6 horas sorteia-se uma amostra de 20 peças e, havendo mais de 15% de defeituosos, encerra-se produção para verificação do processo. Qual a probabilidade de uma parada desnecessária?
+
+\$p = 0.10 \$ $P(\hat p= 0.15 ) = ?$ $binom(20,0.1)$ $N(0.1,0.1 *0.9/20)$
+
+$P(\frac{\hat p-p}{\sqrt{\frac{pq}{n}}}>\frac{0.15-0.10}{\sqrt{\frac{0.1*0.9}{20}}}) =P(Z> 0,7462) = 1-0.7734 = 0,2266$ $P=22,66\%$
+
+#### 5) Suponha que a produção do exemplo anterior esteja sob controle, isto ́e, p = 10%, e que os itens sejam vendidos em caixas com 100 unidades. Usando a distribuição de probabilidade **exata** e **aproximada** da variável Sn: total de itens defeituosos em uma caixa, calcule manualmente e/ou usando o R a probabilidade de que uma caixa:
+
+##### a) tenha mais do que 10% de itens defeituosos?
+
+```{r}
+pnorm(0.1,0.1 * 0.9 /20)
+```
+
+A proporção de defeituosos em uma caixa de 100 unidades tem distribuição $N(0.1, 0.1 · 0.9/100)$. Então a probabilidade de uma proporção de mais de 0.1 defeituoso é dada por $P(Z > 0) = 0.5$
+
+##### b) não tenha itens defeituosos?
+
+P(0 defeituosos em 100) = 0.9100 ≈ 2.65 × 10−5, ou quase zero.
+
+#### 6) Voluntários se quotizam para realizar uma obra
+
+Uma instituição de caridade deseja realizar uma obra que custa R\$3500,00 em sua sede. Entre os contribuintes habituais dessa instituição, cada um pode contribuir com algo em torno de RS120,00 ± um desvio padrão de R\$50,00. Se 30 dessas pessoas se quotizarem para lvantar fundos com essa finalidade, qual a probabilidade de que eles consigam o montante necessário?
