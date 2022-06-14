@@ -165,24 +165,46 @@ $P(Z<-1,00) + P(Z>4,00) = 0,15866 + 0,00003 = 0,15869$\
 
 #### 4) Um procedimento de controle de qualidade foi planejado para garantir um máximo de 10% de itens defeituosos na produção. A cada 6 horas sorteia-se uma amostra de 20 peças e, havendo mais de 15% de defeituosos, encerra-se produção para verificação do processo. Qual a probabilidade de uma parada desnecessária?
 
-\$p = 0.10 \$ $P(\hat p= 0.15 ) = ?$ $binom(20,0.1)$ $N(0.1,0.1 *0.9/20)$
+$p = 0.10 $ 
 
-$P(\frac{\hat p-p}{\sqrt{\frac{pq}{n}}}>\frac{0.15-0.10}{\sqrt{\frac{0.1*0.9}{20}}}) =P(Z> 0,7462) = 1-0.7734 = 0,2266$ $P=22,66\%$
+$P(\hat p= 0.15 ) = ?$ 
 
-#### 5) Suponha que a produção do exemplo anterior esteja sob controle, isto ́e, p = 10%, e que os itens sejam vendidos em caixas com 100 unidades. Usando a distribuição de probabilidade **exata** e **aproximada** da variável Sn: total de itens defeituosos em uma caixa, calcule manualmente e/ou usando o R a probabilidade de que uma caixa:
+$binom(20,0.1)$ 
+
+$N(0.1,0.1 *0.9/20)$
+
+$P(\frac{\hat p-p}{\sqrt{\frac{pq}{n}}}>\frac{0.15-0.10}{\sqrt{\frac{0.1*0.9}{20}}}) =P(Z> 0,7462) = 1-0.7734 = 0,2266$ 
+
+$P=22,66\%$
+
+#### 5) Suponha que a produção do exemplo anterior esteja sob controle, isto é, p = 10%, e que os itens sejam vendidos em caixas com 100 unidades. Usando a distribuição de probabilidade **exata** e **aproximada** da variável Sn: total de itens defeituosos em uma caixa, calcule manualmente e/ou usando o R a probabilidade de que uma caixa:
 
 ##### a) tenha mais do que 10% de itens defeituosos?
 
-```{r}
+```{r  echo = FALSE}
 pnorm(0.1,0.1 * 0.9 /20)
 ```
 
-A proporção de defeituosos em uma caixa de 100 unidades tem distribuição $N(0.1, 0.1 · 0.9/100)$. Então a probabilidade de uma proporção de mais de 0.1 defeituoso é dada por $P(Z > 0) = 0.5$
+A proporção de defeituosos em uma caixa de 100 unidades tem distribuição $N(0.1, 0.1 \cdot 0.9/100)$. Então a probabilidade de uma proporção de mais de 0.1 defeituoso é dada por $P(Z > 0) = 0.5$
 
 ##### b) não tenha itens defeituosos?
 
-P(0 defeituosos em 100) = 0.9100 ≈ 2.65 × 10−5, ou quase zero.
+P(0 defeituosos em 100) = $0.9^{100} \approx 2.65 \times 10^{-5}$, ou quase zero.
 
 #### 6) Voluntários se quotizam para realizar uma obra
 
-Uma instituição de caridade deseja realizar uma obra que custa R\$3500,00 em sua sede. Entre os contribuintes habituais dessa instituição, cada um pode contribuir com algo em torno de RS120,00 ± um desvio padrão de R\$50,00. Se 30 dessas pessoas se quotizarem para lvantar fundos com essa finalidade, qual a probabilidade de que eles consigam o montante necessário?
+Uma instituição de caridade deseja realizar uma obra que custa R\$3500,00 em sua sede. Entre os contribuintes habituais dessa instituição, cada um pode contribuir com algo em torno de R\$120,00 ± um desvio padrão de R\$50,00. Se 30 dessas pessoas se quotizarem para levantar fundos com essa finalidade, qual a probabilidade de que eles consigam o montante necessário?
+
+Queremos calcular $P[\sum_{i=1}^{30}X_i \ge 3500]$
+
+Dividindo por 30: $= P[\overline{X}_{30} \ge \frac{3500}{30}]$
+
+sabemos que $\overline{X}_{30} \approx N(120,50/\sqrt{30})$
+
+então, $P[\sum X_i \ge 3500] = P[\overline{X}_{30} \ge \frac{3500}{30}]$
+
+$P[\frac{\overline{X}_{30} - 120}{\frac{50}{\sqrt{30}}} \ge \frac{\frac{3500}{30} - 120} {\frac{50}{\sqrt{30}}}]$
+
+$\approx P[Z \ge -0.365] = 0.64$
+
+Isso significa que a chance da obra ser realizada com base nesses 30 donativos seria de aproximadamente $64\%$.
