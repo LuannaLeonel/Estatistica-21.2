@@ -57,17 +57,6 @@ print(pnorm(-1.64,0,1))
 
 #### 2) Seja X uma v.a, tal que, X \~ N(100;25), determinar:
 
-```{r}
-m = 100
-var = 5
-
-a = 1- pnorm(108,m,var)
-b = 0
-c = pnorm(107,m,var) - pnorm(89,m,var)
-d = pnorm(16 + m ,m,var) - pnorm(12 + m ,m ,var)
-e = pnorm(116,m,var) - pnorm(112,m,var)
-```
-
 ##### a) $P(X ≥ 108)$
 
 = 0,0548
@@ -91,15 +80,66 @@ e = pnorm(116,m,var) - pnorm(112,m,var)
 
 ##### f) $P (X < 100 ou X > 106)$;
 
+= 0,6151
+
 ##### g) o valor do quantil x, tal que $P (X < x) = 0, 05$;
+
+= 91,8
 
 ##### h) o valor do quantil x, tal que $P (X > x) = 0, 05$;
 
+= 108,2
+
 ##### i) o valor do quantil x, tal que $P (X > x) = 0, 975$;
+
+= 90,2
 
 ##### j) Apresente os inputs e ouputs usando a linguagem R de todos os cálculos dos itens anteriores sem usar a distribuição da variável padronizada $Z =$ $\frac{X−μ}{σ}$
 
+```{r}
+m = 100
+dp = 5
+
+cat("a)",1- pnorm(108,m,dp))
+cat("b)",0)
+cat("c)",pnorm(107,m,dp) - pnorm(89,m,dp))
+cat("d)",pnorm(16 + m ,m,dp) - pnorm(12 + m ,m ,dp))
+cat("e)",pnorm(116,m,dp) - pnorm(112,m,dp))
+cat("f)",pnorm(100,m,dp) + 1 - pnorm(106,m,dp))
+cat("g)",qnorm(0.05,m,dp))
+cat("h)",qnorm(1-0.05,m,dp))
+cat("i)",qnorm(1-0.975,m,dp))
+```
+
 #### 3)  A vida útil (em anos) de um computador pessoal tem distribuição aproximadamente normal com média de 2,9 anos e variância de 1,96 anos.
+
+##### a) Que proporção dos computadores falhará no primeiro ano?
+
+= 0,0874
+
+##### b) Que proporção dos computadores durará quatro anos ou mais?
+
+= 0,2160
+
+##### c) Que proporção dos computadores durará no mínimo dois anos?
+
+= 0,7398
+
+##### d) Que proporção dos computadores durará mais de 2,5 anos, porém menos de quatro anos?
+
+= 0,3964
+
+##### e) Se o fabricante adota uma política de garantia segundo a qual no máximo 0,5% dos computadores devem de ser substituídos, qual é o período dessa garantia?
+
+= -0,7061. Esse valor indica que não é possível criar essa política de garantia.
+
+##### f)  Se 10.000 computadores são vendidos, quantos espera-se serem devolvidos à fábrica segundo a política de garantia adotada acima?
+
+= 50
+
+##### g) Qual é o valor da vida útil em que o mesmo é superado em 5%?
+
+= 0,6040
 
 #### 4) Mostre que, em qualquer distribuição normal, a área sob a curva (probabilidade), determinada por cada um dos intervalos abaixo, é sempre a mesma e independe dos parâmetros da distribuição:
 
