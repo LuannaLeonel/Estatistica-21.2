@@ -208,3 +208,75 @@ $P[\frac{\overline{X}_{30} - 120}{\frac{50}{\sqrt{30}}} \ge \frac{\frac{3500}{30
 $\approx P[Z \ge -0.365] = 0.64$
 
 Isso significa que a chance da obra ser realizada com base nesses 30 donativos seria de aproximadamente $64\%$.
+
+#### 7) Pesquisa de mercado
+Uma empresa estuda a possibilidade de lançar no mercado um novo detergente, por um preço um pouco mais alto do que o dos produtos similares, mas supostamente de qualidade muito superior. Para isso ela encomendou uma pesquisa de mercado onde 200 consumidores escolhidos aleatoriamente serão ouvidos sobre sua intenção de adquirir o novo produto. A empresa só pretende lançá-lo de fato no mercado se pelo menos 40 entre os consumidores consultados responderem favoravelmente. Seja p a verdadeira proporção populacional dos consumidores dispostos a usar o novo produto. Trabalhando com a variável $S_{200}$: total de consumidores favoráveis à aquisição do novo detergente dentre os 200 e, se p = 0, 15: 
+
+##### i) Calcule a probabilidade de que o lançamento ocorrerá utilizando a distribuição exata da variável $S_{200}$.
+
+$P(X \ge 40) = \sum_{i=40}^{200}\binom{200}{i}p^i(1-p)^{200-i}$
+$P(X \ge 40) = 0,0335$
+
+```{R, echo=FALSE}
+res = 0.0
+for(i in 40:200){res = res + dbinom(i, size=200, prob=0.15)}
+  
+```
+
+##### ii) Verifique se as condições de aproximação da distribuição binomial pela normal indicam uma boa aproximação da binomial para a distribuição normal.
+
+Sim pois o número de tentativas (o número de consumidores) é maior ou igual a 30. 
+
+##### iii) Calcule a probabilidade de que o lançamento ocorrerá utilizando a distribuição aproximada da variável $S_{200}$ sem e com a correção de continuidade.
+
+Sem correção de continuidade:
+
+$Z = \frac{S_{n}-np}{\sqrt{np(1-p)}}$  
+
+$z = \frac{40-200(0,15)}{\sqrt{200(0,15)(0,85)}}$  
+
+$z = \frac{10}{5,0498}$  
+
+$z = 1,9802$  
+
+$P(S_{200} \ge 40) = 1 - P(Z < 1,9802)$ 
+
+$P(S_{200} \ge 40) = 1 - 0,9761$  
+
+$P(S_{200} \ge 40) = 0,0239$
+
+Com correção de continuidade:
+
+$z = \frac{(40-0,5)-200(0,15)}{\sqrt{200(0,15)(0,85)}}$  
+
+$z = \frac{9,5}{5,0498}$  
+
+$z = 1,8813$  
+
+$P(S_{200} > 39,5) = 1 - P(Z \le 1,8813)$ 
+
+$P(S_{200} > 39,5) = 1 - 0,9699$  
+
+$P(S_{200} > 39,5) = 0,0301$
+
+##### iv) Calcule a probabilidade de que o lançamento ocorrerá utilizando a distribuição da proporção amostral, P.
+
+$Z = \frac{\overline{P}-p}{\sqrt{\frac{p(1-p)}{n}}}$  
+
+$Z = \frac{\frac{S_{n}}{n}-p}{\sqrt{\frac{p(1-p)}{n}}}$  
+
+$z = \frac{\frac{40}{200}-0,15}{\sqrt{\frac{0,15(1-0,15)}{200}}}$  
+
+$z = \frac{0,05}{0,0252}$
+
+$z = 1,9841$
+
+$P(\overline{P} \ge 40) = 1 - P(Z < 1,9841)$
+
+$P(\overline{P} \ge 40) = 1 - 0,9761$
+
+$P(\overline{P} \ge 40) = 0,0239$
+
+##### v) Comente sobre os resultados obtidos nos itens acima.
+
+Ao calcular essa probabilidade utilizando os métodos acima observa-se que o valor obtido utilizando a distribuição aproximada é menos exato que o da distribuição exata, porém o valor se torna mais exato com a utilização da correção de continuidade.
