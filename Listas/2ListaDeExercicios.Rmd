@@ -36,11 +36,17 @@ varíaveis específicas de interesse para a pesquisa: *sexo, idade, presença de
 
 ##### d) A pesquisa requer a coleta de uma amostra? Por que?
 
+Sim. Pela necessidade de rapidez da pesquisa, considerando a importancia de que a clinica seja capaz de lidar com a pandemia efetivamente.
+
 ##### e) Se a pesquisa requer a coleta de uma amostra:
 
 ###### i) Diga o que a constitui e que tipo de amostragem é mais adequado para a sua coleta.
 
+A amostra é constituída por uma parcela dos pacientes que foram atendidos pelo consultório, sendo selecionados pela técnica de Planejamento de experimentos, considereando que é essencial analisar o efeito que as variáveis têm umas sobre as outras.
+
 ###### ii) Apresente as informações, o cálculo e o resultado para o tamanho da amostra.
+
+
 
 ```{r}
 # Amostra de 18 pacientes de um mês da clínica
