@@ -1,0 +1,72 @@
+---
+title: "2 Lista de Exercícios"
+author: "Igor Seródio Barcelar, Henrique Vitor Chaves Galindo e Luanna Leonel de Farias Silva"
+date: '2022-08-04'
+output: pdf_document
+---
+
+```{r setupandlibs, message=FALSE, echo=FALSE, warning=FALSE}
+
+library(readr)
+library(dplyr)
+```
+
+
+### *Desenvolvimento de uma Pesquisa Estatística*
+
+#### 1) Apresente/Descreva um problema em que seja necesśario o planejamento e o desenvolvimento de uma pesquisa(estudo) estatística(o) para que o mesmo seja resolvido.
+
+Devido às consequências do Covid-19, um consultório de Pneumologia precisa priorizar os atendimentos de seus pacientes levando em consideração idade, risco e teste positivo para COVID-19. Os médicos que atendem na clínica também precisam saber como o vírus afetou seus pacientes.
+
+#### 2) A partir do problema descrito acima:
+
+##### a) Diga qual é a população associada ao problema e o tipo.
+
+Nesse caso, a População é o conjunto de pacientes do consultório. Essa é uma população finita.
+
+##### b) Apresente os objetivos geral e específicos do estudo(pesquisa) estatístico(a).
+
+O objetivo geral é saber como o COVID-19 afetou os pacientes da clínica. O objetivo específico é definir a ordem de prioridade das consultas de cada paciente de acordo com o risco.
+
+##### c) Diga quais varíaveis e quais os seus tipos podem ser de interesse na pesquisa.
+
+varíaveis específicas de interesse para a pesquisa: *sexo, idade, presença de comorbidade, já teve covid, numero total de casos,*
+
+##### d) A pesquisa requer a coleta de uma amostra? Por que?
+
+Não, o espaço amostral ideal seria a totalidade dos pacientes da clínica, com o objetivo de optimizar as ordens de consultas com o mínimo dano possível.
+
+##### e) Na sua pesquisa o que pode ser apresentado como exemplo de *parâmetro*, *estatística* e *estimativa*? 
+TODO
+
+```{r}
+# mockup data: Amostra de 18 pacientes de um mês da clínica
+df_pacientes <- read_csv("~/Estatistica-21.2/data/PACIENTES.csv")
+head(df_pacientes)
+```
+
+#### 3) Apresente ou colete uma base de dados necessária para a resolução de um problema (podeser o mesmo do item 1) que requer uma análise estatística descritiva e inferencial.
+
+##### a) Descreva o problema, população, amostra, tipo de amostragem, objetivos geral e específicos, variáveis e tipos correspondentes, além de dizer quais são os parâmetros que mais interessam analisar.
+
+A pecuária é um dos grandes causadores da emissão de gases do efeito estufa, então foi realizado um levantamento de municípios com uma quantidade elevada de cabeças de gado (40.000) para avaliar, consequentemente, a porcentagem que possui uma produção maior de metano usando dados do ano de 2017. A população são os municípios brasileiros, a amostra é aleatória simples e consiste em 374 municípios (superior a 5% de certeza), a variável é a quantidade de cabeças de gado em cada município e é do tipo quantitativa discreta. O parâmetro de interesse é a porcentagem de municípios que possuem mais de 40.000 cabeças de gado. Analisando a amostra a estatística obtida foi que 14,97% dos munícipios possuiam mais que 40.000 cabeças de gado (dentro da margem de erro, sendo 17,24% o valor do parâmetro).
+(como chegar nesses numero a partir de calculos do R?)
+##### b) Anexe; separadamente; a base de dados em excel ou csv ou disponibilize o link de acesso à base.
+
+```{r}
+df_município <- read_csv("~/Estatistica-21.2/data/municipio.csv")
+head(df_município)
+```
+
+##### Análise
+TODO  definir hipotese da pesquisa para poder criar os plots
+```{r}
+
+```
+
+
+
+
+
+
+origem do dado: <https://basedosdados.org/dataset/br-ibge-censo-agropecuario?bdm_table=municipio>
