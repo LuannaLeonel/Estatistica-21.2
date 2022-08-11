@@ -1,0 +1,125 @@
+---
+title: "2º Estágio - Trabalho"
+author: Igor Seródio Barcelar, Henrique Vitor Chaves Galindo e Luanna Leonel de Farias
+  Silva
+date: '2022-08-04'
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setupandlibs, message=FALSE, echo=FALSE, warning=FALSE}
+
+library(readr)
+library(dplyr)
+```
+
+
+### *Desenvolvimento de uma Pesquisa Estatística*
+
+#### 1) Apresente/Descreva um problema em que seja necessário o planejamento e o desenvolvimento de uma pesquisa(estudo) estatística(o) para que o mesmo seja resolvido.
+
+Devido às consequências do Covid-19, um consultório de Pneumologia precisa priorizar os atendimentos de seus pacientes levando em consideração idade, risco e teste positivo para COVID-19. Os médicos que atendem na clínica também precisam saber como o vírus afetou seus pacientes.
+
+#### 2) A partir do problema descrito acima:
+
+##### a) Diga qual é a população associada ao problema e o tipo.
+
+Nesse caso, a População é o conjunto de pacientes do consultório. Essa é uma população finita.
+
+##### b) Apresente os objetivos geral e específicos do estudo(pesquisa) estatístico(a).
+
+O objetivo geral é saber como o COVID-19 afetou os pacientes da clínica. O objetivo específico é definir a ordem de prioridade das consultas de cada paciente de acordo com o risco.
+
+##### c) Diga quais variáveis e quais os seus tipos podem ser de interesse na pesquisa.
+
+Variáveis Qualitativas Nominais: *sexo, presença de comorbidade, já teve covid*
+Variáveis Quantitativas Discretas: *idade, número total de casos*
+
+##### d) A pesquisa requer a coleta de uma amostra? Por que?
+
+Não, o espaço amostral ideal seria a totalidade dos pacientes da clínica, com o objetivo de optimizar as ordens de consultas com o mínimo dano possível.
+
+##### e) Na sua pesquisa o que pode ser apresentado como exemplo de *parâmetro*, *estatística* e *estimativa*? 
+
+Parâmetro: A proporção de pacientes que testaram positivo para Covid-19.
+Estatística: A média amostral da quantidade de pacientes com comorbidades.
+Estimativa: Escolhendo aleatoriamente uma amostra de 16 pacientes a proporção amostral de pacientes com nível de risco igual a 4 foi: $\overline{p} = 0,1111$.
+
+```{r}
+# mockup data: Amostra de 18 pacientes de um mês da clínica
+df_pacientes <- read_csv("PACIENTES.csv")
+head(df_pacientes)
+```
+
+#### 3) Apresente ou colete uma base de dados necessária para a resolução de um problema (pode ser o mesmo do item 1) que requer uma análise estatística descritiva e inferencial.
+
+##### a) Descreva o problema, população, amostra, tipo de amostragem, objetivos geral e específicos, variáveis e tipos correspondentes, além de dizer quais são os parâmetros que mais interessam analisar.
+
+O desmatamento é um problema ambiental grave enfrentado pelo nosso país. Todos os anos a área de floresta desmatada cresce, causando danos ao clima e à biodiversidade presente na Floresta Amazônica. A base de dados utilizada descreve o desmatamento em muninípios da Amazônia Legal de 2000 a 2019. Nós iremos realizar um teste de hipotese com ${H}_{0} = (µ = {µ}_{0})$ e ${H}_{1} = (µ \neq {µ}_{0})$, onde ${µ}_{0}$ é a média do incremento de área desmatada de todos os municipios dos anos de 2001 a 2011 e µ é a média do incremento de área desmatada de uma amostra de municipios no ano de 2012. A população são os municipios da Amazônia Legal no ano de 2012. O tipo de amostragem é aleatória simples. A variável analizada é o incremento da área desmatada de um municipio em um determinado ano e ela é do tipo quantitativa continua. Os principais parâmetros analizados serão ${µ}_{0}$ e µ.
+
+##### b) Anexe; separadamente; a base de dados em excel ou csv ou disponibilize o link de acesso à base.
+
+origem do dado: <https://basedosdados.org/dataset/br-inpe-prodes?bdm_table=desmatamento_municipio>
+
+##### c) Desenvolva análise exploratória e descritiva dos dados sempre buscando responder aos objetivos e ou hipóteses da pesquisa / problema, com insigths de interesse prático.
+```{r}
+df_desmatamento <- read_csv("desmatamento_municipio.csv")
+head(df_desmatamento)
+
+qnd_municipios <- nrow(df_desmatamento %>% distinct(id_municipio,.keep_all = T))
+
+df_anos <- df_desmatamento %>%
+  select(ano,desmatado,area,incremento) %>%
+  group_by(ano) %>%
+  mutate(desmatamento_ano = sum(desmatado),area_total = sum(area), incremento_ano = sum(incremento), incremento_por_municipio = mean(incremento)) %>%
+  select(ano,desmatamento_ano,area_total,incremento_ano, incremento_por_municipio) %>%
+  distinct(ano,.keep_all = T)
+
+df_decada <- df_anos %>%  filter(  ano > 2000 & ano <2012)
+
+head(df_decada)
+
+media_incremento_por_municipio_decada <- mean(df_decada$incremento_por_municipio)
+
+dp_incremento_por_municipio_decada <- sd(df_decada$incremento_por_municipio)
+
+qnd_municipios <- nrow(df_desmatamento %>% distinct(id_municipio,.keep_all = T))
+
+cat(media_incremento_por_municipio_decada)
+cat(dp_incremento_por_municipio_decada)
+cat(qnd_municipios)
+
+```
+```{r}
+
+erro_amostral = 0.05
+
+n0 = 1/(erro_amostral**2)
+
+tamanho_amostra = ceiling((qnd_municipios*n0)/(qnd_municipios+n0))
+
+cat(tamanho_amostra)
+
+df_2012 <- df_desmatamento %>%  filter(ano == 2012) %>% select(id_municipio, incremento)
+
+amostra <- df_2012 %>% slice_sample(n = tamanho_amostra)
+
+media_amostral <- mean(amostra$incremento)
+
+cat(media_amostral)
+
+```
+```{r}
+alpha = 0.05
+xc = qnorm(alpha, media_incremento_por_municipio_decada, dp_incremento_por_municipio_decada, FALSE)
+
+curve(dnorm(x, mean = media_incremento_por_municipio_decada, sd = dp_incremento_por_municipio_decada), media_incremento_por_municipio_decada - 2.5*dp_incremento_por_municipio_decada, media_incremento_por_municipio_decada + 2.5*dp_incremento_por_municipio_decada, xlab = "incremento por município")
+
+abline(v = xc, col = "blue")
+abline(v = xc - 2*(xc - media_incremento_por_municipio_decada), col = "blue")
+abline(v = media_amostral, col = "red")
+```
+O valor p encontrado foi maior do que a probabilidade determinada pelo nível de confiança, o que nos leva à não rejeição da hípotese ${H}_{0}$. Entretanto é possível observar que a diferença entre ${µ}_{0}$ e µ é razoalvelmente grande. Durante o período entre 2001 e 2011 houve uma queda continua do valor de incremento, de forma que a variancia da variável foi alta. Dessa forma é possível concluir que a queda no valor de incremento observado na amostra de 2012 está dentro da variação observada nos anos anteriores, não havendo uma mudança notável nessa tendencia.
+
+
